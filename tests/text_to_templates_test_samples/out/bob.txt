@@ -1,0 +1,7 @@
+constexpr ScriptTemplate bobScriptTemplate("bob.py", "\x01" R"(bib)");
+
+const ScriptTemplate * ScriptTemplate::bob() {return &bobScriptTemplate;}
+
+addScriptFromTemplate(ScriptTemplate::bob());
+
+static const ScriptTemplate * bob();
