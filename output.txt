@@ -2,33 +2,87 @@ all files are stored in apps/code/
 
 script_template.cpp:
 
-constexpr ScriptTemplate searcherScriptTemplate("searcher.py", "\x01" R"(a = """
-a
+constexpr ScriptTemplate searcherScriptTemplate("searcher.py", "\x01" R"(B_field_of_coil_of_wire_solenoid = """
+aka Solenoid
+Magnitnoe pole prohodit ot +
+do - vnutri "Coil of wire",
+po bokam magnitnoe pole idet
+obratno i ogibaet "Coil of
+wire".
 """
 
-bib = """
-asdasdsasdfgfdagdfddddddddddddddddddddddddddddddddddd
+Lorentz_force = """
+
+F = B * q * v * sin
+(<theta>)
+
+Left hand rule
+B - magnetic field - in the
+inside side of the left hand
+I - electric current (ONLY
+POSITIIVE, if electron:
+reversed) - in direction
+with all fingers
+F - Lorentz force - in
+direction with big finger
+
+
+
+
 """
 
-bob = """
-abobababasda
-asdasdasdfsadf
-asdfasdfas
-sadfas
-dfa
-sdfasd
-fasdfsd
-s
-df
+Magnetic_fields = """
+N - North - red
+S - South - blue
+lines go from N to S
 
-sdf
+x - line away
+. - line towards (like an
+arrow)
 
-sdfsdfsdfsdfsdf
 
-sdfsdfdsdddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
+Fleming's left hand rule -
+prav. lev. ruki: 
+- bolshoi palez, verh -
+Force experienced by the
+wire
+- Ukazatel., vpered - the
+magnetic field
+- Sred., pravo - current in
+the wire 
+
+Right hand grip rule
 """
 
-vars_names = [(a, "a"), (bib, "bib"), (bob, "bob")]
+Mass_spectrometry = """
+There are four key stages in
+the process for Mass
+Spectrometry.
+1. Ionisation  
+2. Acceleration
+3. Deflection
+4. Detection
+
+1. Electro Ionisation is the
+most common type of
+ionisation.
+2. Acceleration is a simple
+step where the ions are
+placed between a set of
+charges parallel plates. 
+3. Ions are deflected by the
+magnetic field surrounding
+the instrument. The amount
+of deflection depends on the
+mass and charge of the ions.
+The amount of deflection
+depends on the mass and
+charge of the ions. F = B *
+q * v ( sin(<theta>) is 1)
+4. Detector
+"""
+
+vars_names = [(B_field_of_coil_of_wire_solenoid, "B_field_of_coil_of_wire_solenoid"), (Lorentz_force, "Lorentz_force"), (Magnetic_fields, "Magnetic_fields"), (Mass_spectrometry, "Mass_spectrometry")]
 
 def s(in_val, characters=20):
     global vars_names
@@ -41,51 +95,109 @@ def s(in_val, characters=20):
 
 const ScriptTemplate * ScriptTemplate::searcher() {return &searcherScriptTemplate;}
 
-constexpr ScriptTemplate aScriptTemplate("a.py", "\x01" R"(a)");
+constexpr ScriptTemplate B_field_of_coil_of_wire_solenoidScriptTemplate("B_field_of_coil_of_wire_solenoid.py", "\x01" R"(aka Solenoid
+Magnitnoe pole prohodit ot +
+do - vnutri "Coil of wire",
+po bokam magnitnoe pole idet
+obratno i ogibaet "Coil of
+wire".)");
 
-const ScriptTemplate * ScriptTemplate::a() {return &aScriptTemplate;}
+const ScriptTemplate * ScriptTemplate::B_field_of_coil_of_wire_solenoid() {return &B_field_of_coil_of_wire_solenoidScriptTemplate;}
 
-constexpr ScriptTemplate bibScriptTemplate("bib.py", "\x01" R"(asdasdsasdfgfdagdfddddddddddddddddddddddddddddddddddd)");
+constexpr ScriptTemplate Lorentz_forceScriptTemplate("Lorentz_force.py", "\x01" R"(
+F = B * q * v * sin
+(<theta>)
 
-const ScriptTemplate * ScriptTemplate::bib() {return &bibScriptTemplate;}
+Left hand rule
+B - magnetic field - in the
+inside side of the left hand
+I - electric current (ONLY
+POSITIIVE, if electron:
+reversed) - in direction
+with all fingers
+F - Lorentz force - in
+direction with big finger
 
-constexpr ScriptTemplate bobScriptTemplate("bob.py", "\x01" R"(abobababasda
-asdasdasdfsadf
-asdfasdfas
-sadfas
-dfa
-sdfasd
-fasdfsd
-s
-df
 
-sdf
 
-sdfsdfsdfsdfsdf
+)");
 
-sdfsdfdsdddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd)");
+const ScriptTemplate * ScriptTemplate::Lorentz_force() {return &Lorentz_forceScriptTemplate;}
 
-const ScriptTemplate * ScriptTemplate::bob() {return &bobScriptTemplate;}
+constexpr ScriptTemplate Magnetic_fieldsScriptTemplate("Magnetic_fields.py", "\x01" R"(N - North - red
+S - South - blue
+lines go from N to S
+
+x - line away
+. - line towards (like an
+arrow)
+
+
+Fleming's left hand rule -
+prav. lev. ruki: 
+- bolshoi palez, verh -
+Force experienced by the
+wire
+- Ukazatel., vpered - the
+magnetic field
+- Sred., pravo - current in
+the wire 
+
+Right hand grip rule)");
+
+const ScriptTemplate * ScriptTemplate::Magnetic_fields() {return &Magnetic_fieldsScriptTemplate;}
+
+constexpr ScriptTemplate Mass_spectrometryScriptTemplate("Mass_spectrometry.py", "\x01" R"(There are four key stages in
+the process for Mass
+Spectrometry.
+1. Ionisation  
+2. Acceleration
+3. Deflection
+4. Detection
+
+1. Electro Ionisation is the
+most common type of
+ionisation.
+2. Acceleration is a simple
+step where the ions are
+placed between a set of
+charges parallel plates. 
+3. Ions are deflected by the
+magnetic field surrounding
+the instrument. The amount
+of deflection depends on the
+mass and charge of the ions.
+The amount of deflection
+depends on the mass and
+charge of the ions. F = B *
+q * v ( sin(<theta>) is 1)
+4. Detector)");
+
+const ScriptTemplate * ScriptTemplate::Mass_spectrometry() {return &Mass_spectrometryScriptTemplate;}
 ------------------------------
 
 script_store.cpp:
 
 addScriptFromTemplate(ScriptTemplate::searcher());
 
-addScriptFromTemplate(ScriptTemplate::a());
+addScriptFromTemplate(ScriptTemplate::B_field_of_coil_of_wire_solenoid());
 
-addScriptFromTemplate(ScriptTemplate::bib());
+addScriptFromTemplate(ScriptTemplate::Lorentz_force());
 
-addScriptFromTemplate(ScriptTemplate::bob());
+addScriptFromTemplate(ScriptTemplate::Magnetic_fields());
+
+addScriptFromTemplate(ScriptTemplate::Mass_spectrometry());
 ------------------------------
 
 script_template.h:
 
 static const ScriptTemplate * searcher();
 
-static const ScriptTemplate * a();
+static const ScriptTemplate * B_field_of_coil_of_wire_solenoid();
 
-static const ScriptTemplate * bib();
+static const ScriptTemplate * Lorentz_force();
 
-static const ScriptTemplate * bob();
+static const ScriptTemplate * Magnetic_fields();
+
+static const ScriptTemplate * Mass_spectrometry();
 ------------------------------

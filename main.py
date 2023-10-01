@@ -3,6 +3,30 @@ import os
 import templates
 
 
+def prepare_text(text: str) -> str:
+    """here will be all text preparation"""
+    LIMIT_SYMBOLS_LINE = 28
+    words = text.split(' ')
+    lines = []
+    for word in words:
+        if len(lines) == 0:
+            lines.append(word)
+        elif '\n' in word:
+            lines_words = word.split('\n')
+            if len(lines_words[0]) + len(lines[-1]) + 1 <= LIMIT_SYMBOLS_LINE:
+                lines[-1] += ' ' + lines_words[0]
+            else:
+                lines.append(lines_words[0])
+
+            for el in lines_words[1:]:
+                lines.append(el)
+        elif len(lines[-1]) + len(word) + 1 <= LIMIT_SYMBOLS_LINE:
+            lines[-1] += ' ' + word
+        else:
+            lines.append(word)
+    return '\n'.join(lines)
+
+
 def text_to_code(text: str, name: str) -> str:
     text = text.replace('"', '\"').replace("'", "\'")
     return f'{name} = """\n{text}\n"""'
@@ -32,8 +56,8 @@ def main():
     names = []
     for name in os.listdir("texts"):
         with open("texts/" + name, "r", encoding='utf-8') as file:
-            text = file.read()
-        name = name.split('.')[0]
+            text = prepare_text(file.read())
+        name = name.split('.')[0].replace('(', '').replace(')', '').replace(' ', '_')
         v1, v2, v3 = text_to_part_of_files(text, name)
         script_template_cpp.append(v1)
         script_store_cpp.append(v2)
