@@ -62,7 +62,6 @@ def insert_data_in_searcher(names: list) -> str:
 
     return text
 
-
 def main():
     script_template_cpp = []
     script_store_cpp = []
@@ -73,7 +72,7 @@ def main():
         with open("texts/" + name, "r", encoding='utf-8') as file:
             text = prepare_text(file.read())
         name = name.split('.')[0].replace('(', '').replace(')', '')
-        name = ''.join([el.capitalize() for el in re.split('[ _]', name)])
+        name = ''.join([el[0].upper() + el[1:] for el in re.split('[ _]', name)])
 
         if MAKE_WITH_SEARCHER:
             text = name + f' = """{name}\n' + text + '\n"""'
